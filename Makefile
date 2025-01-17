@@ -1,23 +1,28 @@
-# Compiler variables
-CC := gcc
-CFLAGS := -Wall -Werror
-
 # Directories
 BUILD_DIR := build
 SRC_DIR := src
 INCLUDE_DIR := include
 
-# Rules
-all: hexd
+# Files
+OBJS := $(BUILD_DIR)/main.o $(BUILD_DIR)/cmd.o
+BIN := $(BUILD_DIR)/hexd
 
-main.o:
-	$(CC) $(CFLAGS) -o $(BUILD_DIR)/main.o -c $(SRC_DIR)/main.c
 
-hexd: main.o
-	$(CC) $(CFLAGS) -o $(BUILD_DIR)/hexd $(BUILD_DIR)/main.o
+# Compiler info
+CC := gcc
+CFLAGS := -Wall -Werror -I$(INCLUDE_DIR)
+
+# Targets
+all: run
+
+hexd: $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(BIN)
+
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 run: hexd
-	./$(BUILD_DIR)/hexd
+	./$(BIN)
 
 clean:
-	rm $(BUILD_DIR)/hexd $(BUILD_DIR)/main.o
+	rm -f $(BIN) $(OBJS)
