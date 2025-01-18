@@ -54,5 +54,5 @@ void print_command(Command* cmd) {
         
     }
 
-    fprintf("%s", cmd->description);
+    printf("%s", cmd->description);
 }
