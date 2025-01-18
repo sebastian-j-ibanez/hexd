@@ -4,7 +4,7 @@ SRC_DIR := src
 INCLUDE_DIR := include
 
 # Files
-OBJS := $(BUILD_DIR)/main.o $(BUILD_DIR)/cmd.o
+OBJS := $(BUILD_DIR)/main.o $(BUILD_DIR)/cmd.o $(BUILD_DIR)/list.o
 BIN := $(BUILD_DIR)/hexd
 
 
@@ -13,7 +13,10 @@ CC := gcc
 CFLAGS := -Wall -Werror -I$(INCLUDE_DIR)
 
 # Targets
-all: run
+all: hexd
+
+debug: $(OBJS)
+	$(OBJS) += -ggdb
 
 hexd: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(BIN)
