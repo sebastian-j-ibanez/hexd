@@ -13,7 +13,7 @@ DynamicArray* new_dynamic_array(size_t elem_size, int capacity) {
 // Get the ith element of the array.
 void* get(DynamicArray* d, int i) {
     if (d != NULL && i >= 0 && i < d->length) {
-        return (int*)d->array + (i * d->elem_size);
+        return d->array + (i * d->elem_size);
     }
 
     return NULL;
@@ -22,7 +22,7 @@ void* get(DynamicArray* d, int i) {
 // Set the ith element of the array to a new value.
 int set(DynamicArray* d, int i, void* new_value) {
     if (d != NULL && new_value != NULL && i >= 0 && i < d->length) {
-        memcpy((int*)d->array + (i * d->elem_size), new_value, d->elem_size);
+        memcpy(d->array + (i * d->elem_size), new_value, d->elem_size);
         return 0;
     }
     return -1;
