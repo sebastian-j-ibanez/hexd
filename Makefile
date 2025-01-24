@@ -15,13 +15,11 @@ CFLAGS := -Wall -Werror -pedantic -g -I$(INCLUDE_DIR)
 # Targets
 all: hexd
 
-debug: $(OBJS)
-	$(OBJS) += -ggdb
-
 hexd: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(BIN)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run: hexd
