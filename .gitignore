@@ -1,5 +1,10 @@
+# Build files
+build/*
+
+# Clangd files
 .cache/*
+compile_commands.json
+
+# Editor files
 .idea/*
 .vscode/*
-build/*
-compile_commands.json
