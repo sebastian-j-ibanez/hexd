@@ -4,8 +4,8 @@
 #define MAX_LINE 16
 
 void print_help(void) {
-    printf("hexd is a binary hexdump util\n\n");
-    printf("Usage: hexd [binary file]\n");
+    printf("hexd is a hex dump util\n\n");
+    printf("Usage: hexd [file]\n");
 }
 
 int main(int argc, char** argv) {
