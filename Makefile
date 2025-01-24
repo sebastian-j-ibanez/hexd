@@ -4,13 +4,13 @@ SRC_DIR := src
 INCLUDE_DIR := include
 
 # Files
-OBJS := $(BUILD_DIR)/main.o $(BUILD_DIR)/cmd.o $(BUILD_DIR)/list.o
+OBJS := $(BUILD_DIR)/main.o
 BIN := $(BUILD_DIR)/hexd
 
 
 # Compiler info
-CC := gcc
-CFLAGS := -Wall -Werror -I$(INCLUDE_DIR)
+CC := clang
+CFLAGS := -Wall -Werror -pedantic -g -I$(INCLUDE_DIR)
 
 # Targets
 all: hexd
